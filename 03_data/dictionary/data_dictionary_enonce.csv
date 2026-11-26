@@ -1,0 +1,27 @@
+file,column,type,description,example,candidate_key,nullable
+customers.csv,customer_id,object,Identifiant client,C001,YES,NO
+customers.csv,customer_name,object,Customer name,Customer_001,NO,NO
+customers.csv,group_code,object,Groupe client,ETH,NO,NO
+customers.csv,customer_type,object,Customer type,Shipping,NO,NO
+vessel_calls.csv,vessel_id,object,Identifiant navire/escale,V001,YES,NO
+vessel_calls.csv,vessel_name,object,Vessel name,VESSEL_001,NO,NO
+vessel_calls.csv,vessel_type,object,Vessel type,Feeder,NO,NO
+vessel_calls.csv,service_code,object,Code service navire,ASIA,NO,NO
+container_events.csv,event_id,int64,Event id,1,YES,NO
+container_events.csv,container_id,object,Identifiant conteneur,CONT0003316,NO,NO
+container_events.csv,customer_id,object,Identifiant client,C050,NO,NO
+container_events.csv,vessel_id,object,Identifiant navire/escale,V030,NO,NO
+container_events.csv,event_type,object,Type événement,MOVE,NO,NO
+container_events.csv,event_ts,object,Horodatage événement,2026-03-25 01:47:32,NO,NO
+container_events.csv,yard_area,object,Zone Yard,Y08B,NO,NO
+container_events.csv,freight_status,object,Freight status,FCL,NO,NO
+container_events.csv,gross_weight_kg,float64,Poids brut en kilogrammes,8822.5,NO,NO
+yard_moves.csv,move_id,int64,Move id,1,YES,NO
+yard_moves.csv,container_id,object,Identifiant conteneur,CONT0000839,NO,NO
+yard_moves.csv,move_ts,object,Move ts,2026-09-12 01:01:02,NO,NO
+yard_moves.csv,from_area,object,From area,Y08,NO,NO
+yard_moves.csv,to_area,object,To area,Y04,NO,NO
+yard_moves.csv,equipment_id,object,Identifiant équipement,CHE02,NO,NO
+equipment.csv,equipment_id,object,Identifiant équipement,CHE01,YES,NO
+equipment.csv,equipment_type,object,Equipment type,RMG,NO,NO
+equipment.csv,home_area,object,Home area,Y04,NO,NO

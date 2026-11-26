@@ -1,0 +1,7 @@
+# Adapter le chemin local si nécessaire
+hdfs dfs -mkdir -p /port_exam/project_01/input
+hdfs dfs -put ../01_DATA_RAW/container_events.csv /port_exam/project_01/input/
+hdfs dfs -ls -h /port_exam/project_01/input
+hdfs dfs -head /port_exam/project_01/input/container_events.csv
+hdfs dfs -du -h /port_exam/project_01/input
+hdfs fsck /port_exam/project_01/input/container_events.csv -files -blocks -locations

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+03_data/landing_hdfs/
+04_scripts/platform/streamlit_app/app_notebook.py
+~$*
+.DS_Store
+Thumbs.db

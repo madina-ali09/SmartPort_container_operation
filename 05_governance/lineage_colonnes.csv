@@ -1,0 +1,163 @@
+couche,table_cible,colonne_cible,origines_directes,transformation,origines_finales
+RAW,raw_customers,customer_id,customers.csv.customer_id,"Copie fidèle, en texte",customers.csv.customer_id
+RAW,raw_customers,customer_name,customers.csv.customer_name,"Copie fidèle, en texte",customers.csv.customer_name
+RAW,raw_customers,group_code,customers.csv.group_code,"Copie fidèle, en texte",customers.csv.group_code
+RAW,raw_customers,customer_type,customers.csv.customer_type,"Copie fidèle, en texte",customers.csv.customer_type
+RAW,raw_customers,_source_file,(généré),Nom du fichier chargé,(généré)
+RAW,raw_customers,_loaded_at,(généré),Horodatage du chargement,(généré)
+RAW,raw_vessel_calls,vessel_id,vessel_calls.csv.vessel_id,"Copie fidèle, en texte",vessel_calls.csv.vessel_id
+RAW,raw_vessel_calls,vessel_name,vessel_calls.csv.vessel_name,"Copie fidèle, en texte",vessel_calls.csv.vessel_name
+RAW,raw_vessel_calls,vessel_type,vessel_calls.csv.vessel_type,"Copie fidèle, en texte",vessel_calls.csv.vessel_type
+RAW,raw_vessel_calls,service_code,vessel_calls.csv.service_code,"Copie fidèle, en texte",vessel_calls.csv.service_code
+RAW,raw_vessel_calls,_source_file,(généré),Nom du fichier chargé,(généré)
+RAW,raw_vessel_calls,_loaded_at,(généré),Horodatage du chargement,(généré)
+RAW,raw_container_events,event_id,container_events.csv.event_id,"Copie fidèle, en texte",container_events.csv.event_id
+RAW,raw_container_events,container_id,container_events.csv.container_id,"Copie fidèle, en texte",container_events.csv.container_id
+RAW,raw_container_events,customer_id,container_events.csv.customer_id,"Copie fidèle, en texte",container_events.csv.customer_id
+RAW,raw_container_events,vessel_id,container_events.csv.vessel_id,"Copie fidèle, en texte",container_events.csv.vessel_id
+RAW,raw_container_events,event_type,container_events.csv.event_type,"Copie fidèle, en texte",container_events.csv.event_type
+RAW,raw_container_events,event_ts,container_events.csv.event_ts,"Copie fidèle, en texte",container_events.csv.event_ts
+RAW,raw_container_events,yard_area,container_events.csv.yard_area,"Copie fidèle, en texte",container_events.csv.yard_area
+RAW,raw_container_events,freight_status,container_events.csv.freight_status,"Copie fidèle, en texte",container_events.csv.freight_status
+RAW,raw_container_events,gross_weight_kg,container_events.csv.gross_weight_kg,"Copie fidèle, en texte",container_events.csv.gross_weight_kg
+RAW,raw_container_events,_source_file,(généré),Nom du fichier chargé,(généré)
+RAW,raw_container_events,_loaded_at,(généré),Horodatage du chargement,(généré)
+RAW,raw_yard_moves,move_id,yard_moves.csv.move_id,"Copie fidèle, en texte",yard_moves.csv.move_id
+RAW,raw_yard_moves,container_id,yard_moves.csv.container_id,"Copie fidèle, en texte",yard_moves.csv.container_id
+RAW,raw_yard_moves,move_ts,yard_moves.csv.move_ts,"Copie fidèle, en texte",yard_moves.csv.move_ts
+RAW,raw_yard_moves,from_area,yard_moves.csv.from_area,"Copie fidèle, en texte",yard_moves.csv.from_area
+RAW,raw_yard_moves,to_area,yard_moves.csv.to_area,"Copie fidèle, en texte",yard_moves.csv.to_area
+RAW,raw_yard_moves,equipment_id,yard_moves.csv.equipment_id,"Copie fidèle, en texte",yard_moves.csv.equipment_id
+RAW,raw_yard_moves,_source_file,(généré),Nom du fichier chargé,(généré)
+RAW,raw_yard_moves,_loaded_at,(généré),Horodatage du chargement,(généré)
+RAW,raw_equipment,equipment_id,equipment.csv.equipment_id,"Copie fidèle, en texte",equipment.csv.equipment_id
+RAW,raw_equipment,equipment_type,equipment.csv.equipment_type,"Copie fidèle, en texte",equipment.csv.equipment_type
+RAW,raw_equipment,home_area,equipment.csv.home_area,"Copie fidèle, en texte",equipment.csv.home_area
+RAW,raw_equipment,_source_file,(généré),Nom du fichier chargé,(généré)
+RAW,raw_equipment,_loaded_at,(généré),Horodatage du chargement,(généré)
+STAGING,stg_customers,customer_id,raw_customers.customer_id,"TRIM, dédoublonnage sur customer_id",customers.csv.customer_id
+STAGING,stg_customers,customer_name,raw_customers.customer_name,"TRIM, dédoublonnage sur customer_id",customers.csv.customer_name
+STAGING,stg_customers,group_code,raw_customers.group_code,"TRIM, dédoublonnage sur customer_id",customers.csv.group_code
+STAGING,stg_customers,customer_type,raw_customers.customer_type,"TRIM, dédoublonnage sur customer_id",customers.csv.customer_type
+STAGING,stg_vessels,vessel_id,raw_vessel_calls.vessel_id,"TRIM, dédoublonnage sur vessel_id",vessel_calls.csv.vessel_id
+STAGING,stg_vessels,vessel_name,raw_vessel_calls.vessel_name,"TRIM, dédoublonnage sur vessel_id",vessel_calls.csv.vessel_name
+STAGING,stg_vessels,vessel_type,raw_vessel_calls.vessel_type,"TRIM, dédoublonnage sur vessel_id",vessel_calls.csv.vessel_type
+STAGING,stg_vessels,service_code,raw_vessel_calls.service_code,"TRIM, dédoublonnage sur vessel_id",vessel_calls.csv.service_code
+STAGING,stg_equipment,equipment_id,raw_equipment.equipment_id,"TRIM, dédoublonnage sur equipment_id",equipment.csv.equipment_id
+STAGING,stg_equipment,equipment_type,raw_equipment.equipment_type,"TRIM, dédoublonnage sur equipment_id",equipment.csv.equipment_type
+STAGING,stg_equipment,home_area,raw_equipment.home_area,"TRIM, dédoublonnage sur equipment_id",equipment.csv.home_area
+STAGING,stg_container_events,raw_rowid,raw_container_events.(rowid),Numéro de ligne RAW,container_events.csv.(ligne)
+STAGING,stg_container_events,event_id,raw_container_events.event_id,CAST en entier,container_events.csv.event_id
+STAGING,stg_container_events,container_id,raw_container_events.container_id,"TRIM, lignes rejetées exclues (EV01-EV09)",container_events.csv.container_id
+STAGING,stg_container_events,customer_id,raw_container_events.customer_id,"TRIM, lignes rejetées exclues (EV01-EV09)",container_events.csv.customer_id
+STAGING,stg_container_events,vessel_id,raw_container_events.vessel_id,"TRIM, lignes rejetées exclues (EV01-EV09)",container_events.csv.vessel_id
+STAGING,stg_container_events,event_type,raw_container_events.event_type,"TRIM, lignes rejetées exclues (EV01-EV09)",container_events.csv.event_type
+STAGING,stg_container_events,freight_status,raw_container_events.freight_status,"TRIM, lignes rejetées exclues (EV01-EV09)",container_events.csv.freight_status
+STAGING,stg_container_events,event_ts,raw_container_events.event_ts,datetime(),container_events.csv.event_ts
+STAGING,stg_container_events,yard_area_raw,raw_container_events.yard_area,TRIM,container_events.csv.yard_area
+STAGING,stg_container_events,yard_area_std,raw_container_events.yard_area,3 premiers caractères (Y08B -> Y08),container_events.csv.yard_area
+STAGING,stg_container_events,gross_weight_kg,raw_container_events.gross_weight_kg,CAST en réel,container_events.csv.gross_weight_kg
+STAGING,stg_yard_moves,raw_rowid,raw_yard_moves.(rowid),Numéro de ligne RAW,yard_moves.csv.(ligne)
+STAGING,stg_yard_moves,move_id,raw_yard_moves.move_id,CAST en entier,yard_moves.csv.move_id
+STAGING,stg_yard_moves,container_id,raw_yard_moves.container_id,"TRIM, lignes rejetées exclues (MV01-MV06)",yard_moves.csv.container_id
+STAGING,stg_yard_moves,from_area,raw_yard_moves.from_area,"TRIM, lignes rejetées exclues (MV01-MV06)",yard_moves.csv.from_area
+STAGING,stg_yard_moves,to_area,raw_yard_moves.to_area,"TRIM, lignes rejetées exclues (MV01-MV06)",yard_moves.csv.to_area
+STAGING,stg_yard_moves,equipment_id,raw_yard_moves.equipment_id,"TRIM, lignes rejetées exclues (MV01-MV06)",yard_moves.csv.equipment_id
+STAGING,stg_yard_moves,move_ts,raw_yard_moves.move_ts,datetime(),yard_moves.csv.move_ts
+CORE,dim_date,date_key,stg_container_events.event_ts ; stg_yard_moves.move_ts,Date au format AAAAMMJJ,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,full_date,stg_container_events.event_ts ; stg_yard_moves.move_ts,DATE(),container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,year,stg_container_events.event_ts ; stg_yard_moves.move_ts,Année,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,month,stg_container_events.event_ts ; stg_yard_moves.move_ts,Mois,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,day,stg_container_events.event_ts ; stg_yard_moves.move_ts,Jour,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,year_month,stg_container_events.event_ts ; stg_yard_moves.move_ts,AAAA-MM,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,week_of_year,stg_container_events.event_ts ; stg_yard_moves.move_ts,Semaine %W,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,day_of_week,stg_container_events.event_ts ; stg_yard_moves.move_ts,Jour %w,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_date,is_weekend,stg_container_events.event_ts ; stg_yard_moves.move_ts,1 si samedi ou dimanche,container_events.csv.event_ts ; yard_moves.csv.move_ts
+CORE,dim_hour,hour_key,(généré),0 à 23,(généré)
+CORE,dim_hour,period,(généré),"Nuit, Matin, Après-midi, Soir",(généré)
+CORE,dim_customer,customer_key,(généré),Clé de substitution,(généré)
+CORE,dim_customer,customer_id,stg_customers.customer_id,Copie,customers.csv.customer_id
+CORE,dim_customer,customer_name,stg_customers.customer_name,Copie,customers.csv.customer_name
+CORE,dim_customer,group_code,stg_customers.group_code,Copie,customers.csv.group_code
+CORE,dim_customer,customer_type,stg_customers.customer_type,Copie,customers.csv.customer_type
+CORE,dim_vessel,vessel_key,(généré),Clé de substitution,(généré)
+CORE,dim_vessel,vessel_id,stg_vessels.vessel_id,Copie,vessel_calls.csv.vessel_id
+CORE,dim_vessel,vessel_name,stg_vessels.vessel_name,Copie,vessel_calls.csv.vessel_name
+CORE,dim_vessel,vessel_type,stg_vessels.vessel_type,Copie,vessel_calls.csv.vessel_type
+CORE,dim_vessel,service_code,stg_vessels.service_code,Copie,vessel_calls.csv.service_code
+CORE,dim_equipment,equipment_key,(généré),Clé de substitution,(généré)
+CORE,dim_equipment,equipment_id,stg_equipment.equipment_id,Copie,equipment.csv.equipment_id
+CORE,dim_equipment,equipment_type,stg_equipment.equipment_type,Copie,equipment.csv.equipment_type
+CORE,dim_equipment,home_area,stg_equipment.home_area,Copie,equipment.csv.home_area
+CORE,dim_yard_area,area_key,(généré),Clé de substitution,(généré)
+CORE,dim_yard_area,area_code,stg_container_events.yard_area_raw ; stg_yard_moves.from_area ; stg_yard_moves.to_area,Union des zones distinctes,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,dim_yard_area,parent_area,stg_container_events.yard_area_raw ; stg_yard_moves.from_area ; stg_yard_moves.to_area,3 premiers caractères,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,dim_yard_area,is_subarea,stg_container_events.yard_area_raw ; stg_yard_moves.from_area ; stg_yard_moves.to_area,1 si le code dépasse 3 caractères,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,dim_event_type,event_type_key,(généré),Clé de substitution,(généré)
+CORE,dim_event_type,event_type,stg_container_events.event_type,Valeurs distinctes,container_events.csv.event_type
+CORE,dim_event_type,event_family,stg_container_events.event_type,Regroupement en familles (hypothèse métier),container_events.csv.event_type
+CORE,dim_freight_status,freight_key,(généré),Clé de substitution,(généré)
+CORE,dim_freight_status,freight_status,stg_container_events.freight_status,Valeurs distinctes,container_events.csv.freight_status
+CORE,dim_freight_status,freight_label,stg_container_events.freight_status,"FCL -> Plein, MTY -> Vide",container_events.csv.freight_status
+CORE,fact_container_event,event_id,stg_container_events.event_id,Copie (dimension dégénérée),container_events.csv.event_id
+CORE,fact_container_event,container_id,stg_container_events.container_id,Copie (dimension dégénérée),container_events.csv.container_id
+CORE,fact_container_event,date_key,stg_container_events.event_ts,AAAAMMJJ,container_events.csv.event_ts
+CORE,fact_container_event,hour_key,stg_container_events.event_ts,Heure,container_events.csv.event_ts
+CORE,fact_container_event,customer_key,stg_container_events.customer_id ; dim_customer.customer_id ; dim_customer.customer_key,Recherche de customer_key dans dim_customer,(généré) ; container_events.csv.customer_id ; customers.csv.customer_id
+CORE,fact_container_event,vessel_key,stg_container_events.vessel_id ; dim_vessel.vessel_id ; dim_vessel.vessel_key,Recherche de vessel_key dans dim_vessel,(généré) ; container_events.csv.vessel_id ; vessel_calls.csv.vessel_id
+CORE,fact_container_event,area_key,stg_container_events.yard_area_raw ; dim_yard_area.area_code ; dim_yard_area.area_key,Recherche de area_key dans dim_yard_area,(généré) ; container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,fact_container_event,event_type_key,stg_container_events.event_type ; dim_event_type.event_type ; dim_event_type.event_type_key,Recherche de event_type_key dans dim_event_type,(généré) ; container_events.csv.event_type
+CORE,fact_container_event,freight_key,stg_container_events.freight_status ; dim_freight_status.freight_status ; dim_freight_status.freight_key,Recherche de freight_key dans dim_freight_status,(généré) ; container_events.csv.freight_status
+CORE,fact_container_event,event_ts,stg_container_events.event_ts,Copie,container_events.csv.event_ts
+CORE,fact_container_event,event_count,(généré),Constante 1,(généré)
+CORE,fact_container_event,gross_weight_kg,stg_container_events.gross_weight_kg,Copie,container_events.csv.gross_weight_kg
+CORE,fact_yard_move,move_id,stg_yard_moves.move_id,Copie (dimension dégénérée),yard_moves.csv.move_id
+CORE,fact_yard_move,container_id,stg_yard_moves.container_id,Copie (dimension dégénérée),yard_moves.csv.container_id
+CORE,fact_yard_move,date_key,stg_yard_moves.move_ts,AAAAMMJJ,yard_moves.csv.move_ts
+CORE,fact_yard_move,hour_key,stg_yard_moves.move_ts,Heure,yard_moves.csv.move_ts
+CORE,fact_yard_move,from_area_key,stg_yard_moves.from_area ; dim_yard_area.area_code ; dim_yard_area.area_key,Recherche de area_key dans dim_yard_area,(généré) ; container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,fact_yard_move,to_area_key,stg_yard_moves.to_area ; dim_yard_area.area_code ; dim_yard_area.area_key,Recherche de area_key dans dim_yard_area,(généré) ; container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+CORE,fact_yard_move,equipment_key,stg_yard_moves.equipment_id ; dim_equipment.equipment_id ; dim_equipment.equipment_key,Recherche de equipment_key dans dim_equipment,(généré) ; equipment.csv.equipment_id ; yard_moves.csv.equipment_id
+CORE,fact_yard_move,move_ts,stg_yard_moves.move_ts,Copie,yard_moves.csv.move_ts
+CORE,fact_yard_move,move_count,(généré),Constante 1,(généré)
+CORE,fact_yard_move,is_same_area,stg_yard_moves.from_area ; stg_yard_moves.to_area,1 si départ = arrivée,yard_moves.csv.from_area ; yard_moves.csv.to_area
+MART,mart_kpi_events_per_day,full_date,dim_date.full_date,Axe d'agrégation,container_events.csv.event_ts ; yard_moves.csv.move_ts
+MART,mart_kpi_events_per_day,year_month,dim_date.year_month,Axe d'agrégation,container_events.csv.event_ts ; yard_moves.csv.move_ts
+MART,mart_kpi_events_per_day,nb_evenements,fact_container_event.event_id,COUNT(*),container_events.csv.event_id
+MART,mart_kpi_events_per_day,nb_conteneurs,fact_container_event.container_id,COUNT DISTINCT,container_events.csv.container_id
+MART,mart_kpi_events_per_day,tonnes,fact_container_event.gross_weight_kg,"SUM / 1000, arrondi à 0,1",container_events.csv.gross_weight_kg
+MART,mart_kpi_move_by_area,area_code,dim_yard_area.area_code,Axe d'agrégation,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+MART,mart_kpi_move_by_area,parent_area,dim_yard_area.parent_area,Axe d'agrégation,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+MART,mart_kpi_move_by_area,is_subarea,dim_yard_area.is_subarea,Axe d'agrégation,container_events.csv.yard_area ; yard_moves.csv.from_area ; yard_moves.csv.to_area
+MART,mart_kpi_move_by_area,nb_move,fact_container_event.event_id ; dim_event_type.event_type,COUNT(*) où event_type = MOVE,container_events.csv.event_id ; container_events.csv.event_type
+MART,mart_kpi_vessel,vessel_id,dim_vessel.vessel_id,Axe d'agrégation,vessel_calls.csv.vessel_id
+MART,mart_kpi_vessel,vessel_name,dim_vessel.vessel_name,Axe d'agrégation,vessel_calls.csv.vessel_name
+MART,mart_kpi_vessel,vessel_type,dim_vessel.vessel_type,Axe d'agrégation,vessel_calls.csv.vessel_type
+MART,mart_kpi_vessel,service_code,dim_vessel.service_code,Axe d'agrégation,vessel_calls.csv.service_code
+MART,mart_kpi_vessel,nb_evenements,fact_container_event.event_id,COUNT(*),container_events.csv.event_id
+MART,mart_kpi_vessel,nb_conteneurs,fact_container_event.container_id,COUNT DISTINCT,container_events.csv.container_id
+MART,mart_kpi_vessel,tonnes,fact_container_event.gross_weight_kg,"SUM / 1000, arrondi à 0,1",container_events.csv.gross_weight_kg
+MART,mart_kpi_service,service_code,mart_kpi_vessel.service_code,Axe d'agrégation,vessel_calls.csv.service_code
+MART,mart_kpi_service,nb_navires,mart_kpi_vessel.vessel_id,COUNT(*),vessel_calls.csv.vessel_id
+MART,mart_kpi_service,nb_evenements,mart_kpi_vessel.nb_evenements,SUM,container_events.csv.event_id
+MART,mart_kpi_service,evenements_par_navire,mart_kpi_vessel.nb_evenements ; mart_kpi_vessel.vessel_id,"Rapport, arrondi à 0,1",container_events.csv.event_id ; vessel_calls.csv.vessel_id
+MART,mart_kpi_service,tonnes,mart_kpi_vessel.tonnes,"SUM de valeurs déjà arrondies, arrondi à la tonne",container_events.csv.gross_weight_kg
+MART,mart_kpi_service,pct_evenements,mart_kpi_vessel.nb_evenements,Part du total,container_events.csv.event_id
+MART,mart_kpi_customer,customer_id,dim_customer.customer_id,Axe d'agrégation,customers.csv.customer_id
+MART,mart_kpi_customer,customer_name,dim_customer.customer_name,Axe d'agrégation,customers.csv.customer_name
+MART,mart_kpi_customer,customer_type,dim_customer.customer_type,Axe d'agrégation,customers.csv.customer_type
+MART,mart_kpi_customer,group_code,dim_customer.group_code,Axe d'agrégation,customers.csv.group_code
+MART,mart_kpi_customer,nb_evenements,fact_container_event.event_id,COUNT(*),container_events.csv.event_id
+MART,mart_kpi_customer,nb_conteneurs,fact_container_event.container_id,COUNT DISTINCT,container_events.csv.container_id
+MART,mart_kpi_customer,tonnes,fact_container_event.gross_weight_kg,"SUM / 1000, arrondi à 0,1",container_events.csv.gross_weight_kg
+MART,mart_kpi_customer,pct_fcl,fact_container_event.freight_key ; dim_freight_status.freight_status,% des événements FCL,(généré) ; container_events.csv.freight_status
+MART,mart_kpi_event_type,event_type,dim_event_type.event_type,Axe d'agrégation,container_events.csv.event_type
+MART,mart_kpi_event_type,event_family,dim_event_type.event_family,Axe d'agrégation,container_events.csv.event_type
+MART,mart_kpi_event_type,nb_evenements,fact_container_event.event_id,COUNT(*),container_events.csv.event_id
+MART,mart_kpi_event_type,poids_moyen_kg,fact_container_event.gross_weight_kg,"AVG, arrondi au kg",container_events.csv.gross_weight_kg
+MART,mart_kpi_event_type,pct_fcl,fact_container_event.freight_key ; dim_freight_status.freight_status,% des événements FCL,(généré) ; container_events.csv.freight_status
+MART,mart_kpi_freight,freight_status,dim_freight_status.freight_status,Axe d'agrégation,container_events.csv.freight_status
+MART,mart_kpi_freight,freight_label,dim_freight_status.freight_label,Axe d'agrégation,container_events.csv.freight_status
+MART,mart_kpi_freight,nb_evenements,fact_container_event.event_id,COUNT(*),container_events.csv.event_id
+MART,mart_kpi_freight,pct_evenements,fact_container_event.event_id,Part du total,container_events.csv.event_id
+MART,mart_kpi_freight,poids_moyen_kg,fact_container_event.gross_weight_kg,"AVG, arrondi au kg",container_events.csv.gross_weight_kg

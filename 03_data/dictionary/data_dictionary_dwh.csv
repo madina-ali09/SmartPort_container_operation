@@ -1,0 +1,31 @@
+﻿layer,table,grain,rows_observed,description,source
+RAW,raw_customers,1 client,80,Copie fidèle de customers.csv (texte) + traçabilité,customers.csv
+RAW,raw_vessel_calls,1 navire / escale,120,Copie fidèle de vessel_calls.csv,vessel_calls.csv
+RAW,raw_container_events,1 événement,9000,Copie fidèle de container_events.csv,container_events.csv
+RAW,raw_yard_moves,1 mouvement,4500,Copie fidèle de yard_moves.csv,yard_moves.csv
+RAW,raw_equipment,1 équipement,40,Copie fidèle de equipment.csv,equipment.csv
+STAGING,stg_customers,1 client,80,"Clients nettoyés (TRIM, dédoublonnés)",raw_customers
+STAGING,stg_vessels,1 navire / escale,120,Navires nettoyés,raw_vessel_calls
+STAGING,stg_equipment,1 équipement,40,Équipements nettoyés,raw_equipment
+STAGING,stg_container_events,1 événement,9000,"Événements typés, zone standardisée (Y08B -> Y08), lignes rejetées exclues",raw_container_events
+STAGING,stg_yard_moves,1 mouvement,4500,"Mouvements typés, lignes rejetées exclues",raw_yard_moves
+CORE,dim_date,1 jour,301,"Calendrier : année, mois, semaine, jour de semaine, week-end","stg_container_events, stg_yard_moves"
+CORE,dim_hour,1 heure (0 à 23),24,"Heure et période de la journée (nuit, matin, après-midi, soir)",généré
+CORE,dim_customer,1 client,80,Dimension client (clé de substitution customer_key),stg_customers
+CORE,dim_vessel,1 navire / escale,120,Dimension navire et service,stg_vessels
+CORE,dim_yard_area,1 zone,6,Zones de cour avec zone parente (Y08B -> Y08) et indicateur de sous-zone,"stg_container_events, stg_yard_moves"
+CORE,dim_event_type,1 type d'événement,7,Types d'événements et leur famille (hypothèse métier),stg_container_events
+CORE,dim_freight_status,1 statut,2,FCL (plein) et MTY (vide),stg_container_events
+CORE,dim_equipment,1 équipement,40,Dimension équipement,stg_equipment
+CORE,fact_container_event,1 événement conteneur,9000,Fait principal : nombre d'événements et poids brut,stg_container_events + dimensions
+CORE,fact_yard_move,1 mouvement de cour,4500,"Second fait : mouvements, indicateur is_same_area",stg_yard_moves + dimensions
+MART,mart_kpi_events_per_day,1 jour,301,"KPI 1 : événements, conteneurs distincts et tonnes par jour","fact_container_event, dim_date"
+MART,mart_kpi_move_by_area,1 zone (saisie),6,"KPI 2 : mouvements MOVE par zone, avec zone parente","fact_container_event, dim_yard_area"
+MART,mart_kpi_vessel,1 navire,120,KPI 3 : volumes par navire,"fact_container_event, dim_vessel"
+MART,mart_kpi_service,1 service,5,KPI 3 : volumes par service et par navire,mart_kpi_vessel
+MART,mart_kpi_customer,1 client,80,KPI 4 : activité par client,"fact_container_event, dim_customer"
+MART,mart_kpi_event_type,1 type d'événement,7,KPI 5 et 6 : poids moyen et part FCL par type,"fact_container_event, dim_event_type"
+MART,mart_kpi_freight,1 statut,2,KPI 6 : part FCL / MTY globale,"fact_container_event, dim_freight_status"
+SUIVI,etl_rejects,1 règle violée par ligne rejetée,0,Lignes rejetées avec l'identifiant de la règle,raw_*
+SUIVI,etl_quality_checks,1 contrôle,32,"Résultat des 32 contrôles qualité (PASS, WARN, FAIL, INFO)",toutes couches
+SUIVI,etl_run_metrics,1 étape d'une exécution,106,"Journal : volume, durée et statut de chaque étape",pipeline

@@ -1,0 +1,18 @@
+table,rule,description,severity
+customers,ROW_COUNT,Volume non nul et évolution expliquée,HIGH
+customers,DUPLICATE_CHECK,Contrôle des clés métier / identifiants,HIGH
+customers,NULL_RATE,Contrôle du taux de valeurs manquantes,MEDIUM
+vessel_calls,ROW_COUNT,Volume non nul et évolution expliquée,HIGH
+vessel_calls,DUPLICATE_CHECK,Contrôle des clés métier / identifiants,HIGH
+vessel_calls,NULL_RATE,Contrôle du taux de valeurs manquantes,MEDIUM
+container_events,ROW_COUNT,Volume non nul et évolution expliquée,HIGH
+container_events,DUPLICATE_CHECK,Contrôle des clés métier / identifiants,HIGH
+container_events,NULL_RATE,Contrôle du taux de valeurs manquantes,MEDIUM
+yard_moves,ROW_COUNT,Volume non nul et évolution expliquée,HIGH
+yard_moves,DUPLICATE_CHECK,Contrôle des clés métier / identifiants,HIGH
+yard_moves,NULL_RATE,Contrôle du taux de valeurs manquantes,MEDIUM
+equipment,ROW_COUNT,Volume non nul et évolution expliquée,HIGH
+equipment,DUPLICATE_CHECK,Contrôle des clés métier / identifiants,HIGH
+equipment,NULL_RATE,Contrôle du taux de valeurs manquantes,MEDIUM
+yard_moves,FK_CONTAINER,container_id doit exister dans container_events pour permettre la réconciliation opérationnelle.,HIGH
+yard_moves,FK_EQUIPMENT,equipment_id doit exister dans equipment.,HIGH
